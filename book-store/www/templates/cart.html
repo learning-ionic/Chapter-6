@@ -1,0 +1,31 @@
+<ion-view view-title="Your Cart" cache-view="false" hide-back-button="true">
+    <ion-content>
+        <div class="padding">
+            <button class="button button-block button-dark" ng-show="books.length > 0" ng-click="checkout()">
+                <i class="icon ion-checkmark"></i> Checkout Cart
+            </button>
+        </div>
+        <ion-list>
+            <div ng-repeat="book in books track by $index" class="row responsive-sm" ng-if="$index % 2 == 0">
+                <ion-item class="col-50" ng-repeat="i in [$index, $index + 1]" ng-if="books[i] != null" ng-href="#/app/book/{{::books[i]._id}}">
+                    <div class="item-thumbnail-left">
+                        <img ng-src="{{::book.image}}">
+                        <h2>{{::books[i].title}}</h2>
+                        <p>{{::books[i].short_description}}</p>
+                        <p>{{::books[i].price | currency}}</p>
+                        <p>
+                            <i class="icon ion-star" ng-repeat="i in getNumber(books[i].rating) track by $index"></i>
+                        </p>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+        <div class="card" ng-show="books.length == 0">
+            <div class="item item-text-wrap text-center">
+                <h2>No Books in your cart!</h2>
+                <br>
+                <a href="#/app/browse">Add a few</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

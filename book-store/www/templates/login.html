@@ -1,0 +1,68 @@
+<ion-modal-view>
+    <div class="tabs-striped tabs-background-assertive tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item" ng-class="{active : viewLogin}" href="javascript:" ng-click="switchTab('login')">
+                <i class="icon ion-locked"></i> Login
+            </a>
+            <a class="tab-item" ng-class="{active : !viewLogin}" href="javascript:" ng-click="switchTab('register')">
+                <i class="icon ion-person-add"></i> Register
+            </a>
+        </div>
+    </div>
+    <!-- login pane -->
+    <ion-pane ng-show="viewLogin">
+        <ion-header-bar>
+            <h1 class="title">Login</h1>
+            <div class="buttons">
+                <button class="button button-assertive" ng-click="hide()">Close</button>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+            <form>
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Email Address</span>
+                        <input type="email" ng-model="user.email">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="user.password">
+                    </label>
+                    <label class="item">
+                        <button class="button button-block button-assertive" ng-click="login()" ng-disabled="!user.email || !user.password" type="submit">Log in</button>
+                    </label>
+                </div>
+            </form>
+        </ion-content>
+    </ion-pane>
+    <!-- register pane -->
+    <ion-pane ng-hide="viewLogin">
+        <ion-header-bar>
+            <h1 class="title">Register</h1>
+            <div class="buttons">
+                <button class="button button-assertive" ng-click="hide()">Close</button>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+            <form>
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Name</span>
+                        <input type="text" ng-model="user.name">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Email Address</span>
+                        <input type="text" ng-model="user.email">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="user.password">
+                    </label>
+                    <label class="item">
+                        <button class="button button-block button-assertive" ng-click="register()" ng-disabled="!user.name || !user.email || !user.password" type="submit" type="submit">Register</button>
+                    </label>
+                </div>
+            </form>
+        </ion-content>
+    </ion-pane>
+</ion-modal-view>

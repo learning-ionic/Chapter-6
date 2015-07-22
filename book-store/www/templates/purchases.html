@@ -1,0 +1,23 @@
+<ion-view view-title="Your Purchases" cache-view="false" hide-back-button="true">
+    <ion-content>
+        <ion-list>
+            <div ng-repeat="group in groups">
+                <ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                    <p><i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i> &nbsp;{{::group.name}}
+                        <span class="badge badge-positive">{{::group.items.length}}</span></p>
+                    <p>You paid : {{::group.total | currency}}</p>
+                </ion-item>
+                <ion-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-href="#/app/book/{{::item._id}}">
+                    <div class="item-thumbnail-left">
+                        <img ng-src="{{::item.image}}">
+                        <h2>{{::item.title}}</h2>
+                        <p>{{::item.short_description}}</p>
+                        <p>
+                            <i class="icon ion-star" ng-repeat="i in getNumber(item.rating) track by $index"></i>
+                        </p>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

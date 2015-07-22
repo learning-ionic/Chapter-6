@@ -1,0 +1,30 @@
+<ion-view view-title="{{::book.title}}" hide-back-button="true">
+    <ion-content>
+        <div class="list card">
+            <div class="item item-avatar">
+                <img ng-src="{{::book.author_image}}">
+                <h2>{{::book.title}}</h2>
+                <p>{{::book.release_date | date:'yyyy-MM-dd'}}</p>
+                <p>{{::book.author}}</p>
+            </div>
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{::book.image}}">
+                <p>
+                    {{::book.long_description}}
+                </p>
+                <p class="row">
+                    <label class="col">
+                        Rating : <i class="icon ion-star" ng-repeat="i in getNumber(book.rating) track by $index"></i>
+                    </label>
+                    <label class="col">
+                        Price :
+                        <label class="subdued">{{::book.price | currency}}</label>
+                    </label>
+                </p>
+                <button class="button button-assertive button-block" ng-click="addToCart()"> 
+                	<i class="icon ion-checkmark"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
